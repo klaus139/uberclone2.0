@@ -4,10 +4,12 @@ import tw from "tailwind-react-native-classnames";
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import {GOOGLE_MAPS_APIKEY} from "@env";
-
+import { useDispatch } from "react-redux";
+import { setDestination, setOrigin } from "../slices/navSlice";
 
 
 const HomeScreen = ({navigation}) => {
+    const dispatch = useDispatch()
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>
@@ -15,7 +17,7 @@ const HomeScreen = ({navigation}) => {
           style={{ width: 100, height: 100, resizeMode: "contain" }}
           source={{ uri: "https://links.papareact.com/gzs" }}
         />
-        <GooglePlacesAutocomplete 
+        <GooglePlacesAutocomplete //this is the search bar that enables the autocomplete when typing
         placeholder="Where from?"
         styles={{
             container:{
@@ -26,9 +28,15 @@ const HomeScreen = ({navigation}) => {
             },
         }}
         enablePoweredByContainer={false}
+        returnKeyType={"search"}
+        fetchDetails={true}
         onPress={(data, details = null)=>{
-            console.log(data);
-            console.log(details);
+            dispatch(setOrigin({
+                location: details.geometry.location,//this gives the location of the place in long and lat
+                description: data.description, //this gives the name of the place
+            }))
+            dispatch(setDestination(null))
+            
         }}
         minLength={2}
         query={{
