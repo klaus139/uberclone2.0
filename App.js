@@ -10,25 +10,25 @@ import MapScreen from "./screens/MapScreen";
 
 
 
+
 export default function App() {
   const Stack = createNativeStackNavigator();
+
   return (
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
           <Stack.Navigator>
             <Stack.Screen
-              name="Home"
+              name="HomeScreen"
               component={HomeScreen}
-              options={{ headerShown: false, onSwipeLeft: () => { navigation.goBack() },
-              gestureEnabled: true, }}
+              options={{ headerShown: false }}
               
             />
             <Stack.Screen
               name="MapScreen"
               component={MapScreen}
-              options={{ headerShown: false, onSwipe: () => { navigation.goBack() },
-              gestureEnabled: true, }}
+              options={{ headerShown: false }}
             />   
           </Stack.Navigator>
         </SafeAreaProvider>
