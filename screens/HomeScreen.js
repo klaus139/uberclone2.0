@@ -36,6 +36,7 @@ const HomeScreen = ({navigation}) => {
             dispatch(setOrigin({
                 location: details.geometry.location,//this gives the location of the place in long and lat
                 description: data.description, //this gives the name of the place
+
             }))
             dispatch(setDestination(null))
             
@@ -47,6 +48,9 @@ const HomeScreen = ({navigation}) => {
         }}
         nearByPlacesAPI="GooglePlacesSearch"
         debounce={400}
+        
+
+        
         />
         <NavOptions />
         <NavFavorites />
