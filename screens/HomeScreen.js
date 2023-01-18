@@ -6,7 +6,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import {GOOGLE_MAPS_APIKEY} from "@env";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
-
+import NavFavorites from "../components/NavFavorites";
 
 const HomeScreen = ({navigation}) => {
     const dispatch = useDispatch()
@@ -16,7 +16,9 @@ const HomeScreen = ({navigation}) => {
         <Image
           style={{ width: 100, height: 100, resizeMode: "contain" }}
           source={{ uri: "https://img.freepik.com/free-vector/branding-identity-corporate-c-logo-vector-design-template_460848-13936.jpg?w=740&t=st=1673957177~exp=1673957777~hmac=586f045edf5b5bb534a8551539efe410b3f3b1c3b76ec38cedaa8f845287295b" }}
+          
         />
+        <Text style={tw`text-xl font-bold -mt-5 ml-5 mb-2 text-blue-500`}>Clux Rides</Text>
         <GooglePlacesAutocomplete //this is the search bar that enables the autocomplete when typing
         placeholder="Where from?"
         styles={{
@@ -47,6 +49,7 @@ const HomeScreen = ({navigation}) => {
         debounce={400}
         />
         <NavOptions />
+        <NavFavorites />
       </View>
     </SafeAreaView>
   );
