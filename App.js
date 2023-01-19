@@ -11,6 +11,7 @@ import MapScreen from "./screens/MapScreen";
 
 
 
+
 export default function App() {
   const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
+         
           <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} //this is used to avoid the keyboard from covering the input fields
           style={{ flex: 1}}
           keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
@@ -36,6 +38,7 @@ export default function App() {
             />   
           </Stack.Navigator>
           </KeyboardAvoidingView>
+          
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>

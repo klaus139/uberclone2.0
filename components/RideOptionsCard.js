@@ -14,7 +14,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { selectTravelTimeInformation } from "../slices/navSlice";
 
+
 const data = [
+    
   {
     id: "Uber-X-123",
     title: "Clux X",
@@ -35,6 +37,8 @@ const data = [
   },
 ];
 
+
+
 const SURGE_CHARGE_RATE = 1.5;
 
 const RideOptionsCard = () => {
@@ -52,7 +56,7 @@ const RideOptionsCard = () => {
           <Icon name="chevron-left" type="fontawesome" />
         </TouchableOpacity>
         <Text style={tw`text-center py-5 text-xl`}>
-          Select a Ride - {travelTimeInformation?.distance.text}{" "}
+          Select a Ride - {travelTimeInformation?.distance?.text}{" "}
         </Text>
       </View>
       <FlatList
@@ -75,23 +79,27 @@ const RideOptionsCard = () => {
             />
             <View style={tw`-ml-6`}>
               <Text style={tw`text-xl font-semibold`}>{title}</Text>
-              <Text>{travelTimeInformation?.duration.text} Travel time</Text>
+              <Text>{travelTimeInformation?.duration?.text} Travel time</Text>
             </View>
+            
             <Text style={tw`text-xl`}>
-              {new Intl.NumberFormat("en-gb", {
-                style: "currency",
-                currency: "GBP",
-              }).format(
-                (travelTimeInformation?.duration.value *
-                  SURGE_CHARGE_RATE *
-                  multiplier) /
-                  100
-              )}
+{/*                 
+                {new Intl.NumberFormat("en-gb", {
+                  style: "currency",
+                  currency: "GBP",
+                }).format(
+                  (travelTimeInformation?.duration.value *
+                    SURGE_CHARGE_RATE *
+                    multiplier) /
+                    100
+                )} */}
+                
+                ₦2000
             </Text>
           </TouchableOpacity>
         )}
       />
-      <View>
+      <View style={tw`mt-auto border-t border-gray-200`}>
         <TouchableOpacity
           style={tw`bg-black py-2 -m-2 ${!selected && "bg-gray-300"} `}
         >
